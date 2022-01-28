@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit facilis
+      fugit, rem quo tempora repellendus? Deserunt, magni! Temporibus, sit ea?
+      Recusandae odit necessitatibus aliquam asperiores totam porro, inventore
+      enim error?
+    </p>
+    <button id="button" type="button">Promeni boju teksta</button>
+
+    <script>
+      document.getElementById("button").addEventListener("click", styleText);
+      var counter = 0;
+      function styleText() {
+        counter++;
+        if (counter % 2 == 1) {
+          document.getElementById("text").style.color = "blue";
+        } else {
+          document.getElementById("text").style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>
