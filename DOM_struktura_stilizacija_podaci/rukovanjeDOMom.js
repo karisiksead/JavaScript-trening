@@ -53,3 +53,68 @@ function noviAtribut() {
 }
 
 // RUKOVANJE STILIZACIJOM
+// da bi se promenila stilizacija nad nekim elementom
+// preko JS moze se dodati inline stilizacija
+// primer
+var par = document.getElementById("p_3");
+par.style.color = "blue";
+
+// stilizacija se moze promeniti dodavanjem i uklanjanjem classa nad elementima
+// primer
+document.getElementById("myId_1").classList.add("crveniTekst");
+// ili ovako preko promenljive
+var par_2 = document.getElementById("p_2");
+par_2.classList.add("yellowTekst");
+// uklanjanje klase
+par_2.classList.remove("yellowTekst");
+
+// DODAVANJE I BRISANJE elemenata
+
+// prvo ide kreiranje elementa
+var noviPragraf = document.createElement("p");
+// sada dodajemo tekst paragrafu
+var tekstParagrafa = document.createTextNode(
+  "Ovo je dinamicki kreiran tekst u paragrafu"
+);
+// sada tekst dodajemo u paragraf sa appendChild metodom
+noviPragraf.appendChild(tekstParagrafa);
+// onda se dodaje u stranicu ovaj paragraf sa tekstom
+document.body.appendChild(noviPragraf);
+// sada je ovaj paragraf dodat na kraj stranice
+// da bi smo ga smestili na zeljeno mesto koristi se metoda insertBefore()
+// insertBefore(noviClan, stariClan) prima dva parametra
+var stariParagraf = document.getElementById("p_3");
+document.body.insertBefore(noviPragraf, stariParagraf);
+//  stilizovaceom ovaj noviParagraf u zelena slova da se bolje vidi promena
+noviPragraf.style.color = "green";
+noviPragraf.style.fontSize = "32px";
+// dodacemo mu i klasu za stilizaciju
+noviPragraf.classList.add("sivaPozadina");
+
+// Uklanjanje elemenata metodom - removeChild()
+var list = document.getElementById("orderList_1");
+list.removeChild(list.children[1]);
+
+// Zamena elemenata metodom - replaceChild(newChild, olsChild)
+
+// kreira se novi naslov lekcije
+var noviNaslovLekcije = document.createElement("h1");
+var noviTekstNaslova = document.createTextNode(
+  "Rukovanje DOM strukturom uz pomoc JavaScript-a"
+);
+noviNaslovLekcije.appendChild(noviTekstNaslova);
+// uzimamo referencu starog naslova
+var stariNaslovLekcije = document.getElementById("naslovLekcije");
+// sada se menjaju naslovi
+document.body.replaceChild(noviNaslovLekcije, stariNaslovLekcije);
+
+// vezba, kreiranje novog podnaslova, inline stilizacija, i zamena u jednoj liniji
+
+document.body.replaceChild(
+  document
+    .createElement("h2")
+    .appendChild(
+      document.createTextNode("Podnaslovi lekcija JavaScript treninga")
+    ),
+  document.getElementById("podnaslov")
+);

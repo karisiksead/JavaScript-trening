@@ -5,19 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .crveniTekst {
+        color: red;
+      }
+      .yellowTekst {
+        color: yellow;
+        background-color: black;
+      }
+      .sivaPozadina {
+        background: rgb(228, 224, 216);
+        border: 2px solid rgb(80, 125, 133);
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Rukovanje DOM struktorom</h1>
+    <h1 id="naslovLekcije">Rukovanje DOM struktorom</h1>
+
+    <h2 id="podnaslov">Neki podnaslov</h2>
+
     <p id="p_1">DOM gradi objektnu strukturu u formi stabla.</p>
     <p id="p_2" class="myClass">
       Za pronalazak elemenata po vrednosti atributa id, koristi se metoda
       getElementById, koja se poziva nad 'document' objektoom
     </p>
     <p id="p_3" class="myClass someOdherClass">Tekst treceg paragrafa.</p>
-    <ol>
+    <ol id="orderList_1">
       <li id="myId_1">Item 1</li>
       <li id="myId_2">Item 2</li>
-      <li>Item 3</li>
+      <li id="myID_3">Item 3</li>
       <li id="myId_4">Item 4</li>
     </ol>
     <input
