@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Rukovanje DOM struktorom</h1>
+    <p id="p_1">DOM gradi objektnu strukturu u formi stabla.</p>
+    <p id="p_2" class="myClass">
+      Za pronalazak elemenata po vrednosti atributa id, koristi se metoda
+      getElementById, koja se poziva nad 'document' objektoom
+    </p>
+    <p id="p_3" class="myClass someOdherClass">Tekst treceg paragrafa.</p>
+    <ol>
+      <li id="myId_1">Item 1</li>
+      <li id="myId_2">Item 2</li>
+      <li>Item 3</li>
+      <li id="myId_4">Item 4</li>
+    </ol>
+    <input
+      type="text"
+      name="first-name"
+      id="first-name"
+      value="Klikni me, bicu Button"
+      onclick="noviAtribut()"
+    />
+    <script>
+      document.title = "Javascript - DOM struktura";
+
+      // Pretraga elementa po 'id' - getElementByID
+      //   var paragraph = document.getElementById("p_2");
+
+      //   pretraga elementa po nazivu klase 'class', getElementsByClassName
+      //   var paragraphClass = document.getElementsByClassName("myClass");
+      //   console.log(paragraphClass.length);
+    </script>
+
+    <script src="rukovanjeDOMom.js"></script>
+  </body>
+</html>
