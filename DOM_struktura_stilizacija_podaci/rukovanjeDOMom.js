@@ -118,3 +118,129 @@ document.body.replaceChild(
     ),
   document.getElementById("podnaslov")
 );
+
+// //////////////////////////////////
+// VEZBE SA VIDEO TUTORIJALA
+
+// pristup elementu preko 'ID'
+var tekst_1 = document.getElementById("tekst_1");
+tekst_1.style.color = "blue";
+
+// pristup elementima preko CLASS
+var tekstovi = document.getElementsByClassName("some_class");
+// u promenljivoj 'tekstovi' sada imamo reference na sve elemente koji imaju klasu 'some_class'
+// da bi smo izvrsili neku promenu nad njima moramo proci kroz petlju
+// tri nacina petlji za prolazak kroz niz referenci
+for (var i = 0; i < tekstovi.length; i++) {
+  tekstovi[i].style.color = "green";
+}
+// ili for ... of
+for (const iterator of tekstovi) {
+  iterator.style.color = "pink";
+}
+// for ... in
+for (const key in tekstovi) {
+  if (Object.hasOwnProperty.call(tekstovi, key)) {
+    const element = tekstovi[key];
+    element.style.color = "red";
+  }
+}
+
+// pristup elementima preko TAG imena
+// kreiramo listi i menjamo boju elementima liste
+var items = document.getElementsByTagName("li");
+// for petlja za prolaz kroz elemente
+for (let i = 0; i < items.length; i++) {
+  const element = items[i];
+  element.style.color = "blue";
+  element.style.fontSize = "24px";
+}
+// for ... of petlja
+for (const item of items) {
+  item.style.color = "red";
+}
+
+// for ... in
+for (const key in items) {
+  if (Object.hasOwnProperty.call(items, key)) {
+    const element = items[key];
+    element.style.color = "purple";
+    // element.style.fontSize = "24px";
+    // font-size ne moram da def jer je vec
+    // kroz for petlju def.
+  }
+}
+// ralicite for petlje su navedene kao primer vezbe
+
+// Selektovanje elemenata preko CSS selektora
+// pomocu - querySelector(), ili querySelectorAll()
+
+// querySelector() - selektuje samo prvi element
+var item_1 = document.querySelector("ul li");
+// selektovali smo sve 'li' elemente u 'ul'
+item_1.style.color = "blue";
+
+// querySelectorAll() - selektuje sve elemente
+// mora se proci kroz niz sa nekom od for petlji
+// izabrali smo forEach - petlju
+var items_1 = document.querySelectorAll("ul li");
+items_1.forEach((element) => {
+  element.style.color = "green";
+});
+
+// Promena elmenata, dodavanje vrednosti, atributa ...
+var tekst_1 = document.getElementById("tekst_1");
+// promena teksta sa propertijem ili svojstvom 'innerHTML'
+tekst_1.innerHTML = "Novi tekst paragrafa";
+
+// citanje vrednosti atributa nekom elementu
+// isti ovaj paragraf
+console.log("ID ovog elementa je:", tekst_1.id);
+
+// postavljanje vrednosti atributa nekom HTML elementu
+// koristimo setAttribute(atribut, vrednost);
+var ime = document.getElementById("in_1");
+ime.setAttribute("type", "button");
+
+// stilizacija elemenata
+// do sada smo koristili inline stilizaciju
+// cesta je sada praksa da se stilizacija preko JS
+// vrsi takosto se dodaju klase na elemente koje imaju odredjenu stilizaciju
+
+tekst_1.classList.add("sivaPozadina"); //referencu vec imamo
+
+// DODAVANJE I BRISANJE ELEMENATA
+
+// KREIRAMO novi paragraf
+var noviParagraph = document.createElement("p");
+// dodajemo sadrzaj
+var sadrzajParagrafa = document.createTextNode(
+  "Novi dinamicki sadrzaj paragrafa."
+);
+// dodajemo ovaj sadzaj paragrafu i on se dodaje kao i svaki element
+noviParagraph.appendChild(sadrzajParagrafa);
+// sada dodajemo paragraf sa sadrzajem na stranicu
+document.body.appendChild(noviParagraph);
+
+// UKLANJAMO neki element
+// ako zelimo da uklonimo jednu od stavki iz liste
+var lista = document.getElementById("ul_1");
+// uklanjamo samo jedan 'li' koriscenjem svojstva 'children[2]'
+// 'children[]' je kolekcija svih potmaka jednog elementa
+lista.removeChild(lista.children[2]);
+// da uklonimo celu listu
+//     document.body.removeChild(lista);
+
+//  ZAMENA ELEMENTA nekim DRUGIIM
+// replaceChild(noviElement, stariElement);
+
+// iskoristicemo vec kreirani dinamicki paragraf da ubacimo na mesto paragrafa id=tekst_1
+var paragrafTekst3 = document.getElementById("tekst_3");
+// posto element nije direktno u body mora ovako
+
+// var divArea = document.getElementById("div_1");
+// divArea.replaceChild(noviParagraph, paragrafTekst3);
+
+document.getElementById("div_1").replaceChild(noviParagraph, paragrafTekst3);
+// ovo bi radilo da je stari paragraf van div u body
+// document.body.replaceChild(noviParagraph, paragrafTekst3);
