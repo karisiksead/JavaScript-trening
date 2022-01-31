@@ -244,3 +244,7 @@ var paragrafTekst3 = document.getElementById("tekst_3");
 document.getElementById("div_1").replaceChild(noviParagraph, paragrafTekst3);
 // ovo bi radilo da je stari paragraf van div u body
 // document.body.replaceChild(noviParagraph, paragrafTekst3);
+
+// vezba
+var it = document.getElementById("item1");
+it.style.color = "rgb(203 60 17 / 99%";
