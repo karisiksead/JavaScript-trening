@@ -22,12 +22,12 @@ window.onload = function () {
           xhttp.responseText;
       } else {
         document.getElementById("contentContainer").innerHTML =
-          "NE vidim dokument";
+          "Ne vidim dokument";
       }
-      //   slanje zahteva serveru na adresi
-      xhttp.open("GET", "plain_text.txt", true);
-      xhttp.send();
     };
+    //   slanje zahteva serveru na adresi
+    xhttp.open("GET", "plain_text.txt", true);
+    xhttp.send();
   });
   // JSON podaci
   var buttonJSON = document.getElementById("getBtnJson");
@@ -35,7 +35,8 @@ window.onload = function () {
     var xhttpJson = new XMLHttpRequest();
 
     xhttpJson.onreadystatechange = function () {
-      if (xhttpJson.readyState == 4 && xhttpJson == 200) {
+      if (xhttpJson.readyState == 4 && xhttpJson.status == 200) {
+        //   konvertovanje JSON-a u JS objekat
         var jsonPerson = JSON.parse(xhttpJson.responseText);
         document.getElementById("contentContainer_2").innerHTML =
           "First name " +
@@ -48,7 +49,22 @@ window.onload = function () {
           jsonPerson.hairColor;
       }
     };
+    xhttpJson.open("GET", "content.json", true);
+    xhttpJson.send();
+  });
+  // UPISIVANJE PODATAKA U BAZY
+  var sendButton = document.getElementById("sendBtn");
+
+  sendButton.addEventListener("click", function () {
+    // kreiramo JS objekat
+    var person = {
+      firstName: "Sead",
+      lastName: "Karisik",
+      hairColor: "smedja",
+      eyeColor: "braon",
+    };
+
+    var jsonPersonAdd = JSON.stringify(person);
+    console.log("Person u JSON formatu je: " + jsonPersonAdd);
   });
 };
-
-// UPISIVANJE U BAZY
