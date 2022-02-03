@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rad sa podacima drugi deo</title>
+  </head>
+  <body>
+    <h2>JavaScript Demo rad sa podacima</h2>
+    <button type="button" id="getBtn">Preuzmi podatke</button>
+    <button type="button" id="getBtnJson">Preuzmi JSON podatke</button>
+    <button type="button" id="sendBtn">Upisi podatke u Bazu</button>
+    <div id="contentContainer"></div>
+    <div id="contentContainerJson"></div>
+
+    <script>
+      window.onload = function () {
+        //   Tekst podaci
+        var button = document.getElementById("getBtn");
+        button.addEventListener("click", function () {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+              document.getElementById("contentContainer").innerHTML =
+                xhttp.responseText;
+            }
+          };
+          xhttp.open("GET", "content.txt", true);
+          xhttp.send();
+        });
+        // JSON podaci
+        var buttonJson = document.getElementById("getBtnJson");
+        buttonJson.addEventListener("click", function () {
+          var xhttpJson = new XMLHttpRequest();
+
+          xhttpJson.onreadystatechange = function () {
+            if (xhttpJson.readyState == 4 && xhttpJson.status == 200) {
+              var jsonPerson = JSON.parse(xhttpJson.responseText);
+
+              document.getElementById("contentContainerJson").innerHTML =
+                "First name " +
+                jsonPerson.firstName +
+                "<br>" +
+                "Last name: " +
+                jsonPerson.lastName +
+                "<br>" +
+                "Hair color: " +
+                jsonPerson.hairColor +
+                "<br>" +
+                "Eye color: " +
+                jsonPerson.eyeColor;
+            }
+          };
+          xhttpJson.open("GET", "contentJSON_2.json", true);
+          xhttpJson.send();
+        });
+        // UPISIVANJE PODATAKA U BAZU
+        var sendButton = document.getElementById("sendBtn");
+
+        sendButton.addEventListener("click", function () {
+          // kreiramo JS objekat
+          var person = {
+            firstName: "Sead",
+            lastName: "Karisik",
+            hairColor: "smedja",
+            eyeColor: "braon",
+          };
+
+          var jsonPersonAdd = JSON.stringify(person);
+          console.log("Person u JSON formatu je: " + jsonPersonAdd);
+        });
+      };
+    </script>
+  </body>
+</html>

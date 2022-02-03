@@ -1,0 +1,20 @@
+<persons>
+    <person>
+        <firstName>Ben</firstName>
+        <lastName>Hur</lastName>
+        <hairColor>black</hairColor>
+        <eyeColor>blue</eyeColor>
+    </person>
+    <person>
+        <firstName>Ana</firstName>
+        <lastName>Lord</lastName>
+        <hairColor>blue</hairColor>
+        <eyeColor>brown</eyeColor>
+    </person>
+    <person>
+        <firstName>John</firstName>
+        <lastName>David</lastName>
+        <hairColor>brown</hairColor>
+        <eyeColor>green</eyeColor>
+    </person>
+</persons>
