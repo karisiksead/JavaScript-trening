@@ -14,7 +14,7 @@
   </head>
   <body>
     <h1>Rad sa jQuery bibliotekom (klikni me i promeni mi boju)</h1>
-    <p id="neki-paragraf">Neki tekst paragrafa.</p>
+    <p id="neki-paragraf">Neki tekst paragrafa. Klikni me da promenim boju.</p>
     <p class="neka-klasa">Neki drugi tekst paragrafa.</p>
     <p>Paragraf obojen slozenim selektorom 'p:nth-child(4)'</p>
     <p>
@@ -50,8 +50,14 @@
         });
 
         // deginisanje event handlera nad eventom prvog paragrafa (drugi nacin)
+        var counter = 0;
         $("#neki-paragraf").on("click", function () {
-          $(this).css("color", "grey");
+          if (counter % 2 == 0) {
+            $(this).css("color", "green");
+          } else {
+            $(this).css("color", "blue");
+          }
+          counter++;
         });
         $.ajax({
           url: "contekst.json",
