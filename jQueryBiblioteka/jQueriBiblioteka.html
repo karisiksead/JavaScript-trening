@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>Rad sa jQuery bibliotekom (klikni me i promeni mi boju)</h1>
+    <p id="neki-paragraf">Neki tekst paragrafa.</p>
+    <p class="neka-klasa">Neki drugi tekst paragrafa.</p>
+    <p>Paragraf obojen slozenim selektorom 'p:nth-child(4)'</p>
+    <p>
+      Paragraf obojen slozenim selektorom 'p:nth-child(5) i jQuery umesto $'
+    </p>
+
+    <div id="container"></div>
+
+    <script>
+      // selektovanje 'h1' elementa i koriscenje jQuery f-je 'css'. postavljanje teksta u plavo
+      $("h1").css("color", " blue");
+
+      //   selektovanje elementa po 'id'
+      $("#neki-paragraf").css("color", "red");
+
+      //   selektovanje elemenata po 'class'
+      $(".neka-klasa").css("color", "green");
+
+      //   koriscenjem slozenih selektora (isto kao i kod css-a)
+      $("p:nth-child(4)").css("color", "pink");
+      //   analogno ovom selektoru i specijalnom zanaku '$' je 'jQuery'
+      jQuery("p:nth-child(5)").css("color", "#aa33bb");
+
+      //   RUKOVANJE DOGADJAJIMA (event) SA jQuery bibliotekom
+      //   primer eventa kada je ucitan ceo DOM stranice
+
+      //   Anonimna f-ja se izvrsava kada je ceo DOM ucitan
+      $(document).ready(function () {
+        //   u okviru ove anonimne f-je pisemo JS kod event handlera za evente
+        // kada kliknemo naslov da se promeni boja naslova
+        $("h1").click(function () {
+          $(this).css("color", "black");
+        });
+
+        // deginisanje event handlera nad eventom prvog paragrafa (drugi nacin)
+        $("#neki-paragraf").on("click", function () {
+          $(this).css("color", "grey");
+        });
+        $.ajax({
+          url: "contekst.json",
+          type: "GET",
+          dataTypte: "text",
+          success: function (result) {
+            var json = jQuery.parseJSON(result);
+            $("container").html(json.firstName);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
